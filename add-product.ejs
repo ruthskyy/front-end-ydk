@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style/inventory.css" />
+    <link rel="stylesheet" href="/style/add-product.css" />
+
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+    <title>Add Product</title>
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <ul>
+          <li>
+            <a href="#" class="highlighted">
+              <i class="fas fa-box"></i><span>Inventory</span>
+            </a>
+          </li>
+          <li>
+            <a href="Sell.html">
+              <i class="fa fa-shopping-bag" aria-hidden="true"></i
+              ><span>Sell</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa fa-credit-card-alt" aria-hidden="true"></i
+              ><span>Orders</span>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa fa-map-marker" aria-hidden="true"></i
+              ><span>Track</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+
+    <!-- <h1>The admin will add product here.</h1> -->
+
+    <div class="table">
+      <div class="form-container">
+        <div class="form-header">
+          <h2>Add New Product</h2>
+          <button class="close-btn" onclick="window.location.href='inventory'">&times;</button>
+        </div>
+        <form action="/add-product" method="post">
+          <!-- Product ID -->
+          <div class="input-group">
+            <label for="productId">Product ID</label>
+            <input type="hidden" id="productId" name="productId" value="<%= product ? product.prodId : '' %>" required>
+          </div>
+    
+          <div class="input-group">
+            <label for="productName">Product Name</label>
+            <input type="text" id="productName" name="productName" value="<%= product ? product.name : '' %>" required>
+          </div>
+    
+          <div class="input-group">
+            <label for="productCategory">Category</label>
+            <select id="productCategory" name="productCategory" required>
+              <option value="swine" <%= product && product.category === 'swine' ? 'selected' : '' %>>Swine</option>
+              <option value="poultry" <%= product && product.category === 'poultry' ? 'selected' : '' %>>Poultry</option>
+              <option value="fishFood" <%= product && product.category === 'fishFood' ? 'selected' : '' %>>Fish Food</option>
+            </select>
+          </div>
+    
+          <div class="input-group">
+            <label for="productQuantity">Product Quantity</label>
+            <input type="number" id="productQuantity" name="productQuantity" min="1" value="<%= product ? product.quantity : '' %>" required>
+          </div>
+    
+          <div class="input-group">
+            <label for="reorderLevel">Reorder Level</label>
+            <input type="number" id="reorderLevel" name="reorderLevel" min="1" value="<%= product ? product.reorderLevel : '' %>" required>
+          </div>
+    
+          <div class="input-group">
+            <label for="supplier">Supplier</label>
+            <input type="text" id="supplier" name="supplier" value="<%= product ? product.supplier : '' %>" required>
+          </div>
+    
+          <div class="input-group">
+            <label for="purchasePrice">Purchase Price</label>
+            <input type="number" id="purchasePrice" name="purchasePrice" step="0.01" min="0" value="<%= product ? product.purchasePrice : '' %>" required>
+          </div>
+    
+          <div class="input-group">
+            <label for="sellingPrice">Selling Price</label>
+            <input type="number" id="sellingPrice" name="sellingPrice" step="0.01" min="0" value="<%= product ? product.sellingPrice : '' %>" required>
+          </div>
+    
+          <div class="input-group">
+            <label for="status">Status</label>
+            <select id="status" name="status" required>
+              <option value="High Stock" <%= product && product.status === 'High Stock' ? 'selected' : '' %>>High Stock</option>
+              <option value="Low Stock" <%= product && product.status === 'Low Stock' ? 'selected' : '' %>>Low Stock</option>
+            </select>
+          </div>
+    
+          <div class="input-group">
+            <label for="productDescription">Product Description</label>
+            <textarea id="productDescription" name="productDescription" rows="4" required><%= product ? product.description : '' %></textarea>
+          </div>
+    
+          <button type="submit" class="submit-btn"><%= product ? 'Save Changes' : 'Submit' %></button>
+        </form>
+      </div>
+    </div>
+    
+    
+    
+</body>
+</html>

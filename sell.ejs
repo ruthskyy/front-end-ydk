@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sell Product</title>
+  </head>
+  <body>
+    <div class="sidebar" id="sidebar">
+      <ul>
+        <li>
+          <a href="#" class="highlighted">
+            <i class="fas fa-box"></i><span>Inventory</span>
+          </a>
+        </li>
+        <li>
+          <a href="Sell.html">
+            <i class="fa fa-shopping-bag" aria-hidden="true"></i
+            ><span>Sell</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-credit-card-alt" aria-hidden="true"></i
+            ><span>Orders</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fa fa-map-marker" aria-hidden="true"></i
+            ><span>Track</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <h1>This page is the POS of the admin for the orders.</h1>
+
+    <form action="/process-sale" method="POST">
+      <h2>Sale Form</h2>
+
+      <!-- Product Selection -->
+      <label for="productName">Product Name</label>
+      <select id="productName" name="productName" required>
+        <option value="Product A">Product A</option>
+        <option value="Product B">Product B</option>
+        <option value="Product C">Product C</option>
+      </select>
+      <br /><br />
+
+      <!-- Quantity -->
+      <label for="quantity">Quantity</label>
+      <input type="number" id="quantity" name="quantity" min="1" required />
+      <br /><br />
+
+      <!-- Date of Sale -->
+      <label for="dateOfSale">Date of Sale</label>
+      <input type="date" id="dateOfSale" name="dateOfSale" required />
+      <br /><br />
+
+      <!-- Selling Price -->
+      <label for="sellingPrice">Selling Price</label>
+      <input
+        type="number"
+        id="sellingPrice"
+        name="sellingPrice"
+        step="0.01"
+        required
+      />
+      <br /><br />
+
+      <!-- Discounts -->
+      <label for="discounts">Discounts (%)</label>
+      <input
+        type="number"
+        id="discounts"
+        name="discounts"
+        step="0.01"
+        min="0"
+        value="0"
+      />
+      <br /><br />
+
+      <!-- Total Amount (Calculated) -->
+      <label for="totalAmount">Total Amount</label>
+      <input
+        type="number"
+        id="totalAmount"
+        name="totalAmount"
+        step="0.01"
+        readonly
+      />
+      <br /><br />
+
+      <!-- Pick up or Deliver -->
+      <label for="deliveryMethod">Delivery Method</label>
+      <select id="deliveryMethod" name="deliveryMethod" required>
+        <option value="pickUp">Pick Up</option>
+        <option value="deliver">Deliver</option>
+      </select>
+      <br /><br />
+
+      <!-- Customer Information -->
+      <label for="customerName">Customer Name</label>
+      <input type="text" id="customerName" name="customerName" required />
+      <br /><br />
+
+      <!-- Conditional Delivery Information -->
+      <div id="deliveryDetails" style="display: none">
+        <label for="address">Address (Required if Deliver)</label>
+        <input type="text" id="address" name="address" />
+        <br /><br />
+
+        <label for="contactNumber">Contact Number (Required if Deliver)</label>
+        <input type="text" id="contactNumber" name="contactNumber" />
+        <br /><br />
+      </div>
+
+      <!-- Payment Status -->
+      <label>Payment Status</label>
+      <label for="paidYes">Paid</label>
+      <input type="radio" id="paidYes" name="paid" value="paid" required />
+      <label for="paidNo">Unpaid</label>
+      <input type="radio" id="paidNo" name="paid" value="unpaid" />
+      <br /><br />
+
+      <!-- Payment Method -->
+      <label for="paymentMethod">Payment Method</label>
+      <select id="paymentMethod" name="paymentMethod" required>
+        <option value="cash">Cash</option>
+        <option value="gcash">Gcash</option>
+      </select>
+      <br /><br />
+
+      <!-- Amount Paid -->
+      <label for="amountPaid">Amount Paid</label>
+      <input
+        type="number"
+        id="amountPaid"
+        name="amountPaid"
+        step="0.01"
+        min="0"
+      />
+      <br /><br />
+
+      <!-- Change (Calculated) -->
+      <label for="change">Change</label>
+      <input type="number" id="change" name="change" step="0.01" readonly />
+      <br /><br />
+
+      <button type="submit">Complete Sale</button>
+    </form>
+  </body>
+</html>
